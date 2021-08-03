@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "gitignore": "^0.7.0",
     "helmet": "^4.6.0",
+    "mongoose": "^5.13.5",
     "nanoid": "^3.1.23",
     "node": "^16.5.0",
     "node-fetch": "^2.6.1",

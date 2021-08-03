@@ -10,6 +10,7 @@ import { ExpressPeerServer } from "peer";
 import fs from "fs";
 import { nanoid } from "nanoid";
 import path from "path";
+import connectDb from "./db/config.js";
 
 const app = express();
 const server = http.Server(app);
@@ -45,7 +46,14 @@ app.use(helmet());
 app.use(express.json());
 app.use("/peerJs", peerServer);
 
-app.use("/getId", idRouter);
+// Connect to the Database
+try {
+  connectDb();
+} catch (error) {
+  throw new Error(error.message);
+}
+
+app.use("/id", idRouter);
 app.get("/:roomId", (req, res) => {
   res.redirect(`/${roomId}`);
 });
