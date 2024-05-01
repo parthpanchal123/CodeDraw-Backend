@@ -14,8 +14,8 @@ import connectDb from "./db/config.js";
 
 const app = express();
 const server = http.Server(app);
-var privateKey = fs.readFileSync("./cert/server.key", "utf8");
-var certificate = fs.readFileSync("./cert/server.crt", "utf8");
+var privateKey = process.env.DOMAIN_KEY;
+var certificate = process.env.DOMAIN_CERT;
 
 const peerServer = ExpressPeerServer(server, {
   debug: true,
